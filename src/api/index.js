@@ -19,9 +19,23 @@ export const queryApi = async (query, onChunk) => {
 
         if (value) {
             const chunk = decoder.decode(value, { stream: true });
-            const rawChunk = chunk.replace(/^data:\s?/gm, ""); // remove data:
-
-            onChunk(rawChunk); // <-- Send chunk back to UI
+            const rawChunk = chunk
+                .replace(/\n{3,}/g, "\n") // 3 or more → one newline
+                .replace(/\n\n/g, "") // exactly 2 → remove
+                .replace(/data:/g, "");
+            console.log({ chunk, rawChunk });
+            onChunk(rawChunk);
         }
     }
+};
+
+export const ingestAPi = async formData => {
+    const res = await fetch("http://localhost:4000/api/ingest", {
+        method: "POST",
+        body: formData,
+    });
+
+    const json = await res.json();
+
+    return json;
 };

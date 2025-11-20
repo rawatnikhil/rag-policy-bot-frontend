@@ -56,6 +56,21 @@
     cursor: pointer;
 }
 
+.upload-btn {
+    background: #393ced;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
 .remove-btn:hover {
-    background: #e60000;
+    background: #f43737;
+    color: white;
+}
+
+.upload-btn:hover {
+    background: #2023f0;
+    color: white;
 }

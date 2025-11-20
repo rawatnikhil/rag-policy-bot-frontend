@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./style.css";
+import { ingestAPi } from "../../api";
 
 export default function DragDropPDF() {
     const [file, setFile] = useState(null);
@@ -23,6 +24,23 @@ export default function DragDropPDF() {
         setFile(null);
     };
 
+    const handleUpload = async () => {
+        if (!file) return alert("Select a file first");
+
+        const formData = new FormData();
+        formData.append("file", file);
+
+        try {
+            const json = await ingestAPi(formData);
+            console.log("Server response:", json);
+            setFile(null);
+            alert(json.file + " " + json.message);
+        } catch (err) {
+            console.error(err);
+            alert("Upload failed!");
+        }
+    };
+
     return (
         <div className="drag-container" onDragOver={e => e.preventDefault()} onDrop={handleDrop}>
             {!file ? (
@@ -44,6 +62,10 @@ export default function DragDropPDF() {
 
                     <button className="remove-btn" onClick={handleRemove}>
                         Remove
+                    </button>
+
+                    <button className="upload-btn" onClick={handleUpload}>
+                        Upload
                     </button>
                 </div>
             )}
