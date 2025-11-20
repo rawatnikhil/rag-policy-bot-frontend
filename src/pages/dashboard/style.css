@@ -1,0 +1,17 @@
+/* Page.css */
+.page-container {
+    display: flex;
+    height: 90vh;
+}
+
+.chat-section {
+    width: 60%;
+    background: #f5f5f5;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+}
+
+.upload-section {
+    width: 40%;
+    padding: 20px;
+}
