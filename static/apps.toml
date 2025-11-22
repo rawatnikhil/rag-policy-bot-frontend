@@ -1,0 +1,6 @@
+[build]
+  command = "npm run build"
+
+[[mounts]]
+  destination = "/public"
+  source = "build"

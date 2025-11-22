@@ -1,5 +1,7 @@
+const BASE_URL = "https://backend-misty-sun-5471.fly.dev";
+
 export const queryApi = async (query, onChunk) => {
-    const response = await fetch("http://localhost:4000/api/query", {
+    const response = await fetch(`${BASE_URL}/api/query`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query }),
@@ -30,7 +32,7 @@ export const queryApi = async (query, onChunk) => {
 };
 
 export const ingestAPi = async formData => {
-    const res = await fetch("http://localhost:4000/api/ingest", {
+    const res = await fetch(`${BASE_URL}/api/ingest`, {
         method: "POST",
         body: formData,
     });

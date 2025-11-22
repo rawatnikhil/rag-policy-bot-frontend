@@ -1,0 +1,11 @@
+app = "frontend-nikhil-123"
+primary_region = "bom"
+
+[build]
+
+[env]
+
+[[statics]]
+guest_path = "/public"
+url_prefix = "/"
+fallback = "index.html"
